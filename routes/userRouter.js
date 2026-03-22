@@ -1,13 +1,20 @@
-//core module
+// Core Modules
 const path = require("path");
-//external modules
+
+// External Module
 const express = require("express");
 const userRouter = express.Router();
 
-//local modules
-const rootDir = require("../utility/pathUtil");
+// Local Module
+const { registeredHomes } = require("./hostRouter");
 
 userRouter.get("/", (req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "home.html"));
+  console.log(registeredHomes);
+  res.render("home", {
+    registeredHomes: registeredHomes,
+    pageTitle: "airbnb Home",
+  });
 });
+
 module.exports = userRouter;
+// registered home ko v destrucutr krlia kyuki hostrouter se multile obj arhethe na to jisko host chahey wo hist lo jisko registeredhomes chaheye wp registered homes lo

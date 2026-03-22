@@ -1,20 +1,36 @@
-//core module
+// Core Module
 const path = require("path");
 
-//external modules
+// External Module
 const express = require("express");
-
-//local modules
 const hostRouter = express.Router();
-const rootDir = require("../utility/pathUtil");
+
+// Local Module
+const rootDir = require("../utils/pathUtil");
 
 hostRouter.get("/add-home", (req, res, next) => {
-  res.sendFile(path.join(rootDir, "views", "addHome.html"));
+  res.render("addHome", { pageTitle: "Add Home to airbnb" });
 });
+
+const registeredHomes = [];
 
 hostRouter.post("/add-home", (req, res, next) => {
-  console.log(req.body);
-  res.sendFile(path.join(rootDir, "views", "homeAdded.html"));
+  console.log(
+    "Home Registration successful for:",
+    req.body,
+    req.body.houseName,
+  );
+  registeredHomes.push({ houseName: req.body.houseName });
+  res.render("homeAdded", { pageTitle: "Home Added Successfully" });
 });
 
-module.exports = hostRouter;
+exports.hostRouter = hostRouter;
+exports.registeredHomes = registeredHomes;
+
+// Browser hits POST /add-home  ← URL is defined ✅
+//         ↓
+// Server responds with homeAdded.html ← just the response
+//         ↓
+// Browser shows homeAdded.html
+//         ↓
+// URL still stays /add-home in browser! 👈
