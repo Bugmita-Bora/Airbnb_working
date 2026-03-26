@@ -1,1 +1,26 @@
-[{"houseName":"s","price":"s","location":"s","rating":"s"}]
+[
+  {
+    "id": "1",
+    "houseName": "shantihouse",
+    "price": "1000",
+    "location": "lakhimpur Assam",
+    "rating": "3.5",
+    "photoUrl": "/images/house1.png"
+  },
+  {
+    "id": "2",
+    "houseName": "Bora house",
+    "price": "2500",
+    "location": "Khelmati",
+    "rating": "5.0",
+    "photoUrl": "/images/house2.png"
+  },
+  {
+    "houseName": "Summer home",
+    "price": "4000",
+    "location": "manali",
+    "rating": "4.5",
+    "id": "0.3066641056702061",
+    "photoUrl": "/images/house3.png"
+  }
+]
